@@ -1,0 +1,6 @@
+<svg width="54" height="40" viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Krea">
+  <path d="M13 8c4.4 0 8 3.6 8 8v1h-8c-4.4 0-8-3.6-8-8V8h8Z" fill="#111111"/>
+  <path d="M33 8h8v1c0 4.4-3.6 8-8 8h-8v-1c0-4.4 3.6-8 8-8Z" fill="#111111"/>
+  <path d="M21 23v9h-8c-4.4 0-8-3.6-8-8v-1h16Z" fill="#111111"/>
+  <path d="M25 23h16v1c0 4.4-3.6 8-8 8h-8v-9Z" fill="#111111"/>
+</svg>
