@@ -4,7 +4,23 @@
   --muted: #6b7280;
   --soft: #9ca3af;
   --blue: #0202f1;
-  --font: "Elms Sans", "Elms_Sans", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  --font: "Elms Sans", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Elms Sans";
+  font-style: normal;
+  font-weight: 100 900;
+  src: url("./assets/ElmsSans-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Elms Sans";
+  font-style: italic;
+  font-weight: 100 900;
+  src: url("./assets/ElmsSans-Italic-VariableFont_wght.ttf") format("truetype");
 }
 
 * {
@@ -22,7 +38,9 @@ body {
   background: #ffffff;
   color: var(--ink);
   font-family: var(--font);
+  font-synthesis: none;
   letter-spacing: 0;
+  text-rendering: geometricPrecision;
 }
 
 a {
@@ -353,7 +371,7 @@ button {
   }
 
   .logo-ticker {
-    overflow-x: auto;
+    overflow: hidden;
     scrollbar-width: none;
   }
 
@@ -381,40 +399,156 @@ button {
 
 @media (max-width: 560px) {
   :root {
-    --page-x: 20px;
+    --page-x: 18px;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .unicorn-background {
+    overflow: hidden;
+  }
+
+  .unicorn-scene {
+    height: 100vw;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.08);
+    transform-origin: center;
+    width: 100svh;
+  }
+
+  .unicorn-background canvas,
+  .unicorn-background iframe {
+    height: 100% !important;
+    width: 100% !important;
+  }
+
+  .page-shell {
+    height: 100svh;
+    min-height: 0;
+    overflow: hidden;
   }
 
   .site-header {
-    height: 78px;
+    height: 64px;
+    padding-bottom: 17px;
+    padding-top: 17px;
+  }
+
+  .brand {
+    height: 14px;
+    width: 33px;
+  }
+
+  .brand img {
+    width: 35px;
+  }
+
+  .button {
+    font-size: 14px;
+    font-weight: 650;
+    min-height: 38px;
+    padding: 9px 17px;
   }
 
   .button-outline {
     min-width: auto;
   }
 
+  .button-primary {
+    font-size: 15px;
+    min-height: 44px;
+    min-width: 135px;
+    padding: 12px 24px;
+  }
+
   .main-content {
-    padding-bottom: 56px;
-    padding-top: 52px;
+    align-items: center;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  .two-column {
+    gap: clamp(18px, 4.2svh, 28px);
   }
 
   .hero {
-    gap: 26px;
+    gap: clamp(14px, 2.7svh, 18px);
   }
 
   .hero h1 {
-    font-size: 52px;
-    letter-spacing: -1.8px;
+    font-size: clamp(44px, 13vw, 52px);
+    font-weight: 500;
+    letter-spacing: -1.6px;
+    line-height: 1.02;
   }
 
   .hero p {
-    font-size: 22px;
+    font-size: clamp(18px, 5.2vw, 21px);
+    font-weight: 400;
+    letter-spacing: -0.32px;
+    line-height: 1.2;
+    max-width: 340px;
   }
 
   .accordion {
-    gap: 24px;
+    gap: clamp(6px, 1.2svh, 10px);
+  }
+
+  .accordion-item {
+    padding: clamp(10px, 2svh, 14px) 0;
   }
 
   .accordion-trigger {
-    font-size: 18px;
+    font-size: clamp(17px, 4.8vw, 18px);
+    font-weight: 500;
+  }
+
+  .plus {
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  .accordion-panel {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .logo-ticker {
+    flex-basis: 44px;
+    height: 44px;
+  }
+
+  .logo-track {
+    animation-duration: 16s;
+  }
+
+  .logo-set {
+    gap: 40px;
+    padding-bottom: 9px;
+    padding-top: 9px;
+  }
+
+  .client-logo {
+    max-height: 20px;
+  }
+
+  .client-logo-krea {
+    height: 23px;
+  }
+
+  .site-footer {
+    flex: 0 0 34px;
+    font-size: 12px;
+    height: 34px;
+    padding: 8px var(--page-x) 14px;
+    white-space: nowrap;
   }
 }
