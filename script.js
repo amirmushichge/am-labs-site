@@ -22,7 +22,20 @@ items.forEach((item) => {
   window.addEventListener("resize", syncPanel);
 });
 
+const DESKTOP_UNICORN_PROJECT = "Of6T39qynUrG1BMqs26P";
+const MOBILE_UNICORN_PROJECT = "kbXVpMbQxAnRFCPhEsHO";
+
+const prepareUnicornScene = () => {
+  const scene = document.getElementById("unicorn-scene");
+  if (!scene) return;
+
+  const isMobile = window.matchMedia("(max-width: 560px)").matches;
+  scene.dataset.usProject = isMobile ? MOBILE_UNICORN_PROJECT : DESKTOP_UNICORN_PROJECT;
+};
+
 const loadUnicornStudio = () => {
+  prepareUnicornScene();
+
   const existing = window.UnicornStudio;
 
   if (existing?.init) {
