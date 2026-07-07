@@ -24,6 +24,7 @@ items.forEach((item) => {
 
 const DESKTOP_UNICORN_PROJECT = "Of6T39qynUrG1BMqs26P";
 const MOBILE_UNICORN_PROJECT = "kbXVpMbQxAnRFCPhEsHO";
+const IS_IOS_CHROME = /CriOS/i.test(window.navigator.userAgent);
 
 const prepareUnicornScene = () => {
   const scene = document.getElementById("unicorn-scene");
@@ -63,6 +64,12 @@ const keepForegroundVisible = () => {
   });
 };
 
+const enableCssFallback = () => {
+  document.body.classList.add("use-css-fallback");
+  const scene = document.getElementById("unicorn-scene");
+  if (scene) scene.removeAttribute("data-us-project");
+};
+
 const startForegroundWatchdog = () => {
   keepForegroundVisible();
 
@@ -85,6 +92,12 @@ const startForegroundWatchdog = () => {
 };
 
 const loadUnicornStudio = () => {
+  if (IS_IOS_CHROME) {
+    enableCssFallback();
+    startForegroundWatchdog();
+    return;
+  }
+
   prepareUnicornScene();
   startForegroundWatchdog();
 
