@@ -63,6 +63,7 @@ button {
 
 .unicorn-background * {
   pointer-events: none !important;
+  z-index: 0 !important;
 }
 
 .unicorn-scene,
@@ -70,7 +71,10 @@ button {
 .unicorn-background iframe {
   display: block;
   height: 100%;
+  inset: 0;
+  position: absolute !important;
   width: 100%;
+  z-index: 0 !important;
 }
 
 .page-shell {
@@ -428,9 +432,25 @@ button {
     min-height: 0;
     overflow: hidden;
     position: relative;
-    transition: opacity 220ms ease;
     width: 100%;
-    z-index: 2;
+    z-index: 20;
+  }
+
+  .site-header,
+  .main-content,
+  .logo-ticker,
+  .site-footer {
+    opacity: 1 !important;
+    position: relative;
+    visibility: visible !important;
+    z-index: 30;
+  }
+
+  .site-header,
+  .main-content {
+    display: flex !important;
+    transform: translate3d(0, 0, 0);
+    z-index: 40;
   }
 
   .site-header {
