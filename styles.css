@@ -77,6 +77,78 @@ button {
   z-index: 0 !important;
 }
 
+.css-fallback-background {
+  display: none;
+}
+
+body.use-css-fallback .unicorn-scene,
+body.use-css-fallback .unicorn-background canvas,
+body.use-css-fallback .unicorn-background iframe {
+  display: none !important;
+}
+
+body.use-css-fallback .css-fallback-background {
+  background:
+    radial-gradient(130% 38% at 15% 0%, rgba(135, 211, 255, 0.54), rgba(255, 255, 255, 0) 58%),
+    radial-gradient(120% 42% at 85% 0%, rgba(255, 178, 234, 0.52), rgba(255, 255, 255, 0) 62%),
+    radial-gradient(120% 40% at 18% 100%, rgba(96, 204, 255, 0.42), rgba(255, 255, 255, 0) 60%),
+    radial-gradient(130% 42% at 88% 100%, rgba(255, 168, 231, 0.45), rgba(255, 255, 255, 0) 62%),
+    #ffffff;
+  display: block;
+  height: 100%;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 0;
+}
+
+body.use-css-fallback .css-fallback-background::before,
+body.use-css-fallback .css-fallback-background::after {
+  color: rgba(255, 255, 255, 0.5);
+  content: "a a a m m m a a a a m m m a a a m m m a a a a m m m a a a m m m";
+  font-family: "Elms Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 650;
+  left: -8%;
+  letter-spacing: 7px;
+  line-height: 1.58;
+  pointer-events: none;
+  position: absolute;
+  right: -8%;
+  text-align: justify;
+  text-transform: lowercase;
+  word-spacing: 6px;
+}
+
+body.use-css-fallback .css-fallback-background::before {
+  animation: ascii-drift-top 14s linear infinite;
+  height: 30%;
+  opacity: 0.8;
+  overflow: hidden;
+  text-shadow:
+    0 15px rgba(255, 255, 255, 0.42),
+    0 30px rgba(255, 255, 255, 0.35),
+    0 45px rgba(255, 255, 255, 0.28),
+    0 60px rgba(255, 255, 255, 0.22),
+    0 75px rgba(255, 255, 255, 0.16);
+  top: 0;
+}
+
+body.use-css-fallback .css-fallback-background::after {
+  animation: ascii-drift-bottom 16s linear infinite;
+  bottom: 0;
+  height: 29%;
+  opacity: 0.72;
+  overflow: hidden;
+  text-shadow:
+    0 -15px rgba(255, 255, 255, 0.42),
+    0 -30px rgba(255, 255, 255, 0.35),
+    0 -45px rgba(255, 255, 255, 0.28),
+    0 -60px rgba(255, 255, 255, 0.22),
+    0 -75px rgba(255, 255, 255, 0.16);
+}
+
 .page-shell {
   background: transparent;
   display: flex;
@@ -319,6 +391,27 @@ button {
     transform: translateX(-50%);
   }
 }
+
+@keyframes ascii-drift-top {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-36px, 0, 0);
+  }
+}
+
+@keyframes ascii-drift-bottom {
+  from {
+    transform: translate3d(-36px, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 
 .site-footer {
   align-items: center;
