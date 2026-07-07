@@ -68,6 +68,10 @@ button {
   width: 100%;
 }
 
+.unicorn-scene-mobile {
+  display: none;
+}
+
 .page-shell {
   background: transparent;
   display: flex;
@@ -412,14 +416,14 @@ button {
     overflow: hidden;
   }
 
-  .unicorn-scene {
-    height: 100vw;
-    left: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%, -50%) rotate(90deg) scale(1.08);
-    transform-origin: center;
-    width: 100svh;
+  .unicorn-scene-desktop {
+    display: none;
+  }
+
+  .unicorn-scene-mobile {
+    display: block;
+    height: 100%;
+    width: 100%;
   }
 
   .unicorn-background canvas,
