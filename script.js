@@ -33,8 +33,60 @@ const prepareUnicornScene = () => {
   scene.dataset.usProject = isMobile ? MOBILE_UNICORN_PROJECT : DESKTOP_UNICORN_PROJECT;
 };
 
+const keepForegroundVisible = () => {
+  const setStyle = (element, property, value) => {
+    if (element.style[property] !== value) element.style[property] = value;
+  };
+
+  const foreground = [
+    document.querySelector(".page-shell"),
+    document.querySelector(".site-header"),
+    document.querySelector(".main-content"),
+    document.querySelector(".logo-ticker"),
+    document.querySelector(".site-footer"),
+  ].filter(Boolean);
+
+  foreground.forEach((element) => {
+    setStyle(element, "opacity", "1");
+    setStyle(element, "visibility", "visible");
+  });
+
+  const shell = document.querySelector(".page-shell");
+  if (shell) {
+    setStyle(shell, "position", "relative");
+    setStyle(shell, "zIndex", "20");
+  }
+
+  document.querySelectorAll(".unicorn-background, .unicorn-background *").forEach((element) => {
+    setStyle(element, "pointerEvents", "none");
+    setStyle(element, "zIndex", "0");
+  });
+};
+
+const startForegroundWatchdog = () => {
+  keepForegroundVisible();
+
+  let ticks = 0;
+  const interval = window.setInterval(() => {
+    keepForegroundVisible();
+    ticks += 1;
+    if (ticks > 30) window.clearInterval(interval);
+  }, 500);
+
+  const observer = new MutationObserver(keepForegroundVisible);
+  observer.observe(document.body, {
+    attributes: true,
+    childList: true,
+    subtree: true,
+    attributeFilter: ["style", "class"],
+  });
+
+  window.setTimeout(() => observer.disconnect(), 20000);
+};
+
 const loadUnicornStudio = () => {
   prepareUnicornScene();
+  startForegroundWatchdog();
 
   const existing = window.UnicornStudio;
 
