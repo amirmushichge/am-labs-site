@@ -84,6 +84,14 @@ button {
   z-index: 10;
 }
 
+body.is-loading .page-shell {
+  opacity: 0;
+}
+
+body.is-ready .page-shell {
+  opacity: 1;
+}
+
 .site-header {
   align-items: center;
   display: flex;
@@ -425,30 +433,12 @@ button {
 
   .page-shell {
     height: 100svh;
-    height: 100dvh;
-    inset: 0;
     min-height: 0;
     overflow: hidden;
-    position: fixed;
-    transform: translateZ(0);
-    width: 100%;
-    z-index: 2147483647;
-  }
-
-  .site-header,
-  .main-content,
-  .logo-ticker,
-  .site-footer {
-    pointer-events: auto;
     position: relative;
-    transform: translateZ(0);
-    visibility: visible !important;
+    transition: opacity 220ms ease;
+    width: 100%;
     z-index: 2;
-  }
-
-  .site-header,
-  .main-content {
-    opacity: 1 !important;
   }
 
   .site-header {
