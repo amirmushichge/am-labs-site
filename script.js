@@ -35,11 +35,13 @@ const prepareUnicornScene = () => {
 
 const loadUnicornStudio = () => {
   prepareUnicornScene();
+  window.setTimeout(revealPage, 2500);
 
   const existing = window.UnicornStudio;
 
   if (existing?.init) {
     existing.init();
+    revealPage();
     return;
   }
 
@@ -47,8 +49,19 @@ const loadUnicornStudio = () => {
 
   const script = document.createElement("script");
   script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.2.6/dist/unicornStudio.umd.js";
-  script.onload = () => window.UnicornStudio?.init?.();
+  script.onload = () => {
+    window.UnicornStudio?.init?.();
+    revealPage();
+  };
+  script.onerror = revealPage;
   (document.head || document.body).appendChild(script);
+};
+
+const revealPage = () => {
+  window.setTimeout(() => {
+    document.body.classList.remove("is-loading");
+    document.body.classList.add("is-ready");
+  }, window.matchMedia("(max-width: 560px)").matches ? 1200 : 150);
 };
 
 if (document.readyState === "loading") {
