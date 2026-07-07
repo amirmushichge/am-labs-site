@@ -56,9 +56,13 @@ button {
 .unicorn-background {
   inset: 0;
   isolation: isolate;
-  pointer-events: none;
+  pointer-events: none !important;
   position: fixed;
-  z-index: 0;
+  z-index: 0 !important;
+}
+
+.unicorn-background * {
+  pointer-events: none !important;
 }
 
 .unicorn-scene,
@@ -421,8 +425,30 @@ button {
 
   .page-shell {
     height: 100svh;
+    height: 100dvh;
+    inset: 0;
     min-height: 0;
     overflow: hidden;
+    position: fixed;
+    transform: translateZ(0);
+    width: 100%;
+    z-index: 2147483647;
+  }
+
+  .site-header,
+  .main-content,
+  .logo-ticker,
+  .site-footer {
+    pointer-events: auto;
+    position: relative;
+    transform: translateZ(0);
+    visibility: visible !important;
+    z-index: 2;
+  }
+
+  .site-header,
+  .main-content {
+    opacity: 1 !important;
   }
 
   .site-header {
