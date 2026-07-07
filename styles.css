@@ -84,14 +84,6 @@ button {
   z-index: 10;
 }
 
-body.is-loading .page-shell {
-  opacity: 0;
-}
-
-body.is-ready .page-shell {
-  opacity: 1;
-}
-
 .site-header {
   align-items: center;
   display: flex;
